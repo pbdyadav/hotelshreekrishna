@@ -124,8 +124,14 @@ export default function Attractions() {
               </h1>
               <div className="w-24 h-1 bg-amber-600 mx-auto mb-6"></div>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Discover the spiritual wonders of Ujjain. All major temples and attractions
-                are within easy reach from our hotel.
+                Discover the spiritual heart of Ujjain while staying at Hotel Shree Krishna Palace.
+Our hotel is conveniently located near the city's most revered temples and sacred sites.
+The world-famous Shri Mahakaleshwar Jyotirlinga is just a short distance away, making early morning darshan easy and stress-free.
+Guests can also visit Kal Bhairav Temple, Harsiddhi Mata Temple, and Ram Ghat, all rich in history and devotion.
+Experience the peaceful banks of the Shipra River, known for its spiritual significance and evening aarti.
+Local markets, traditional eateries, and cultural landmarks are easily accessible from our location.
+Whether you are visiting for pilgrimage, festivals, or spiritual exploration, our hotel places you at the center of it all.
+Enjoy a comfortable stay with quick access to Ujjain's most important attractions.
               </p>
             </div>
           </div>

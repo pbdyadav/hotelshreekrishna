@@ -6,18 +6,17 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-amber-600 to-amber-700 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
-              <MapPin className="text-white" size={24} />
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-lg font-bold text-gray-900">Shree Krishna Palace</h1>
-              <p className="text-xs text-amber-600">Ujjain</p>
-            </div>
-          </Link>
+  <header className="sticky top-0 z-40 bg-white shadow-md">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex justify-between items-center h-20">
+        <Link to="/" className="flex items-center">
+          <img
+  src="/logo.png"
+  alt="Hotel Shree Krishna Palace Logo"
+  className="h-20 sm:h-24 w-auto object-contain"
+/>
+        </Link>
+      
 
           <nav className="hidden md:flex items-center gap-8">
             <Link to="/" className="text-gray-700 font-medium hover:text-amber-600 transition-colors">
