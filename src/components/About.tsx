@@ -31,7 +31,7 @@ export default function About() {
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
             Welcome to Our Hotel
           </h2>
-          <div className="w-24 h-1 bg-amber-600 mx-auto mb-6"></div>
+          <div className="w-[480px] h-1 bg-amber-600 mx-auto mb-6"></div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             At Hotel Shree Krishna Palace, we provide comfortable and affordable
             accommodation for devotees and travelers visiting Ujjain. Our priority

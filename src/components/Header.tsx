@@ -22,11 +22,11 @@ export default function Header() {
             <Link to="/" className="text-gray-700 font-medium hover:text-amber-600 transition-colors">
               Home
             </Link>
-            <Link to="/attractions" className="text-gray-700 font-medium hover:text-amber-600 transition-colors">
-              Attractions
-            </Link>
             <Link to="/rooms" className="text-gray-700 font-medium hover:text-amber-600 transition-colors">
               Rooms
+            </Link>
+            <Link to="/attractions" className="text-gray-700 font-medium hover:text-amber-600 transition-colors">
+              Attractions
             </Link>
             <Link to="/contact" className="px-6 py-2 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
               Contact

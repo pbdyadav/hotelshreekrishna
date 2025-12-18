@@ -116,14 +116,14 @@ export default function Attractions() {
   return (
     <>
       <div className="min-h-screen bg-white">
-        <section className="bg-gradient-to-br from-amber-50 via-white to-amber-50/30 py-16 sm:py-24">
+        <section className="bg-gradient-to-br from-amber-50 via-white to-amber-50/30 pt-16 pb-4 sm:pt-24 sm:pb-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 animate-fade-in">
               <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-4">
                 Nearby Attractions
               </h1>
-              <div className="w-24 h-1 bg-amber-600 mx-auto mb-6"></div>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <div className="w-[510px] h-1 bg-amber-600 mx-auto mb-6"></div>
+              <p className="text-xl text-gray-600 leading-relaxed">
                 Discover the spiritual heart of Ujjain while staying at Hotel Shree Krishna Palace.
 Our hotel is conveniently located near the city's most revered temples and sacred sites.
 The world-famous Shri Mahakaleshwar Jyotirlinga is just a short distance away, making early morning darshan easy and stress-free.
@@ -137,11 +137,11 @@ Enjoy a comfortable stay with quick access to Ujjain's most important attraction
           </div>
         </section>
 
-        <section className="py-20 bg-white">
+        <section className="py-1 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-20">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Major Temples & Sacred Sites</h2>
-              <div className="w-16 h-1 bg-amber-600 mb-8"></div>
+              <div className="w-[490px] h-1 bg-amber-600 mb-8"></div>
 
               <div className="space-y-12">
                 {mainAttractions.map((attraction, index) => (
@@ -230,7 +230,7 @@ Enjoy a comfortable stay with quick access to Ujjain's most important attraction
 
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Local Experiences</h2>
-              <div className="w-16 h-1 bg-amber-600 mb-8"></div>
+              <div className="w-[300px] h-1 bg-amber-600 mb-8"></div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {localExperiences.map((exp, index) => {

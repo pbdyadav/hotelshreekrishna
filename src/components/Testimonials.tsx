@@ -53,7 +53,7 @@ export default function Testimonials() {
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
             What Our Guests Say
           </h2>
-          <div className="w-24 h-1 bg-amber-600 mx-auto mb-6"></div>
+          <div className="w-[470px] h-1 bg-amber-600 mx-auto mb-6"></div>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Real experiences from our valued guests who stayed with us
           </p>

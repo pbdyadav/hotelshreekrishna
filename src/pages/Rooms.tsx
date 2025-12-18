@@ -2,13 +2,73 @@ import { Wind, Droplets, Wifi, Car, Tv, Lock, Coffee, Users, Zap, Bed, AlertCirc
 import Footer from '../components/Footer';
 import StickyButton from '../components/StickyButton';
 
+import { useState } from "react";
+
+function ImageSlider({ photos }) {
+  const [current, setCurrent] = useState(0);
+
+  const next = () => {
+    setCurrent((current + 1) % photos.length);
+  };
+
+  const prev = () => {
+    setCurrent((current - 1 + photos.length) % photos.length);
+  };
+
+  return (
+    <div className="flex flex-col items-center gap-4 w-full">
+      {/* Main image */}
+      <div className="relative w-full h-64 sm:h-72 md:h-80 lg:h-[480px] overflow-hidden rounded-lg shadow-lg">
+        <img
+          key={current}
+          src={photos[current]}
+          alt="Room"
+          className="absolute w-full h-full object-cover rounded-xl transition-all duration-700 animate-[flip_0.7s_ease]"
+        />
+
+        <button
+          onClick={prev}
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-3 py-2 rounded-lg"
+        >
+          ❮
+        </button>
+
+        <button
+          onClick={next}
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-3 py-2 rounded-lg"
+        >
+          ❯
+        </button>
+      </div>
+
+      {/* Thumbnail Row */}
+      <div className="flex gap-3 overflow-x-auto justify-center pb-2">
+        {photos.map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt="thumbnail"
+            onClick={() => setCurrent(index)}
+            className={`w-20 h-16 object-cover rounded-md border-2 cursor-pointer transition 
+              ${index === current ? "border-amber-600 scale-110" : "border-transparent opacity-70"}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Rooms() {
   const roomTypes = [
     {
       name: 'Standard Non-AC Room',
       price: '₹500 - ₹700',
       guests: '1-2',
-      image: 'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=800',
+      images: [
+      "/room/Single1.jpg",
+      "/room/Single2.jpg",
+      "/room/Single3.jpg"
+    ],
       description: 'Perfect for budget-conscious travelers seeking comfort without AC. Spacious room with natural ventilation, ceiling fan, and all essential amenities for a pleasant stay.',
       amenities: [
         'Comfortable bed with quality mattress',
@@ -137,24 +197,31 @@ export default function Rooms() {
   return (
     <>
       <div className="min-h-screen bg-white">
-        <section className="bg-gradient-to-br from-amber-50 via-white to-amber-50/30 py-16 sm:py-24">
+        <section className="bg-gradient-to-br from-amber-50 via-white to-amber-50/30 pt-16 pb-4 sm:pt-24 sm:pb-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 animate-fade-in">
               <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-4">
                 Rooms & Amenities
               </h1>
-              <div className="w-24 h-1 bg-amber-600 mx-auto mb-6"></div>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Choose from our comfortable room options designed for every budget and need
+              <div className="w-[535px] h-1 bg-amber-600 mx-auto mb-6"></div>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                Choose from our comfortable room options designed for every budget and need.
+Each room is thoughtfully prepared to offer a peaceful and relaxing stay for individuals, families, and groups.
+Enjoy clean, spacious interiors with fresh linens, soft mattresses, and modern fittings to ensure complete comfort.
+All rooms include attached bathrooms, excellent ventilation, and reliable 24/7 hot water facilities.
+Guests can benefit from convenient in-room features such as complimentary Wi-Fi, seating space, and essential toiletries.
+Private parking, CCTV security, and a friendly reception team make your stay even more safe and hassle-free.
+Whether you're traveling for pilgrimage, business, or family vacation, our rooms offer the perfect balance of affordability and comfort.
+Stay with us and enjoy a welcoming environment designed to make you feel at home in the heart of Ujjain.
               </p>
             </div>
           </div>
         </section>
 
-        <section className="py-20 bg-white">
+        <section className="py-5 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Room Options</h2>
-            <div className="w-16 h-1 bg-amber-600 mb-12"></div>
+            <div className="w-[305px] h-1 bg-amber-600 mb-12"></div>
 
             <div className="space-y-12">
               {roomTypes.map((room, index) => (
@@ -163,15 +230,66 @@ export default function Rooms() {
                   className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-1 border border-amber-50 animate-slide-up"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div className="grid md:grid-cols-2 gap-0">
-                    <div className="h-80 md:h-auto overflow-hidden relative group">
-                      <img
-                        src={room.image}
-                        alt={room.name}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                    </div>
+                  <div
+  className={`grid md:grid-cols-2 gap-10 items-center ${
+    index % 2 === 1 ? "md:flex-row-reverse" : ""
+  }`}
+>
+  <ImageSlider photos={room.images || [room.images]} />
+
+  <div className="p-8 sm:p-10 flex flex-col justify-between">
+    <div>
+      <div className="mb-6">
+        <h3 className="text-3xl font-bold text-gray-900 mb-2">
+          {room.name}
+        </h3>
+        <p className="text-2xl font-bold text-amber-600 mb-4">
+          {room.price}
+          <span className="text-lg text-gray-600 font-normal"> per night</span>
+        </p>
+        <div className="flex items-center gap-2 text-gray-700 font-medium">
+          <Users size={20} className="text-amber-600" />
+          <span>Up to {room.guests} guests</span>
+        </div>
+      </div>
+
+      <p className="text-gray-600 mb-6 leading-relaxed">
+        {room.description}
+      </p>
+
+      <div className="grid sm:grid-cols-2 gap-6">
+        <div>
+          <h4 className="font-bold text-gray-900 mb-3">Amenities:</h4>
+          <ul className="space-y-2">
+            {room.amenities.map((amenity, i) => (
+              <li key={i} className="flex items-start gap-2 text-gray-700 text-sm">
+                <span className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0"></span>
+                {amenity}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-bold text-gray-900 mb-3">Perfect For:</h4>
+          <ul className="space-y-2">
+            {room.features.map((feature, i) => (
+              <li key={i} className="flex items-start gap-2 text-gray-700 text-sm">
+                <span className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0"></span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <button className="mt-8 px-8 py-3 bg-amber-600 text-white font-bold rounded-lg hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+      Book This Room
+    </button>
+  </div>
+
+                    
 
                     <div className="p-8 sm:p-10 flex flex-col justify-between">
                       <div>
@@ -231,7 +349,7 @@ export default function Rooms() {
 
             <div className="mt-20">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Hotel-wide Amenities</h2>
-              <div className="w-16 h-1 bg-amber-600 mb-12"></div>
+              <div className="w-[360px] h-1 bg-amber-600 mb-12"></div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {amenities.map((amenity, index) => {
@@ -263,7 +381,7 @@ export default function Rooms() {
 
             <div className="mt-20">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Booking Information</h2>
-              <div className="w-16 h-1 bg-amber-600 mb-12"></div>
+              <div className="w-[335px] h-1 bg-amber-600 mb-12"></div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {bookingInfo.map((info, index) => (
