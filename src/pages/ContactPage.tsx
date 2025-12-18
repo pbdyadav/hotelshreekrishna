@@ -89,32 +89,40 @@ export default function ContactPage() {
   ];
 
   return (
-    <>
-      <div className="min-h-screen bg-white">
-        <section className="bg-gradient-to-br from-amber-50 via-white to-amber-50/30 py-16 sm:py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16 animate-fade-in">
-              <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-4">
-                Get In Touch
-              </h1>
-              <div className="w-24 h-1 bg-amber-600 mx-auto mb-6"></div>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Have questions? We're here to help you plan your perfect stay in Ujjain
-              </p>
-            </div>
+  <>
+    <div className="min-h-screen bg-white">
+      <section className="bg-gradient-to-br from-amber-50 via-white to-amber-50/30 py-12 sm:py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 animate-fade-in">
+            <h1 className="text-5xl sm:text-4xl font-bold text-gray-900 mb-4 text-left">
+              Get In Touch
+            </h1>
+
+            <div className="w-[205px] h-1 bg-amber-600 mb-8"></div>
+
+            <p className="text-lg text-gray-600 max-w-5xl leading-relaxed text-left">
+              Have questions about your stay in Ujjain? Our team is here to assist you with bookings, 
+              availability, room details, and personalised travel guidance.  
+              <br /><br />
+              We offer fast responses via WhatsApp, phone, and email — ensuring smooth and effortless communication.  
+              <br /><br />
+              Whether you're planning a family visit, group stay, or business trip, we're committed to making 
+              your experience comfortable, convenient, and memorable.
+            </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 mb-20">
-              <div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-4">Contact Information</h2>
-                <div className="w-16 h-1 bg-amber-600 mb-12"></div>
+      <section className="pt-0 pb-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 mb-20">
+            <div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Contact Information</h2>
+              <div className="w-[330px] h-1 bg-amber-600 mb-10"></div>
 
-                <div className="space-y-6">
-                  {contactMethods.map((method, index) => {
-                    const Icon = method.icon;
+              <div className="space-y-6">
+                {contactMethods.map((method, index) => {
+                  const Icon = method.icon;
                     return (
                       <a
                         key={index}
@@ -159,7 +167,7 @@ export default function ContactPage() {
 
               <div>
                 <h2 className="text-4xl font-bold text-gray-900 mb-4">Send Us a Message</h2>
-                <div className="w-16 h-1 bg-amber-600 mb-12"></div>
+                <div className="w-[327px] h-1 bg-amber-600 mb-12"></div>
 
                 <form onSubmit={handleSubmit} className="bg-gradient-to-br from-amber-50 to-white rounded-2xl shadow-lg p-8 border border-amber-100 animate-fade-in">
                   <div className="space-y-6">
@@ -271,7 +279,7 @@ export default function ContactPage() {
 
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-              <div className="w-16 h-1 bg-amber-600 mb-12"></div>
+              <div className="w-[470px] h-1 bg-amber-600 mb-12"></div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 {faqs.map((faq, index) => (
@@ -321,7 +329,7 @@ export default function ContactPage() {
         <div className="mt-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Find Us On Map</h2>
-            <div className="w-16 h-1 bg-amber-600 mb-8"></div>
+            <div className="w-[260px] h-1 bg-amber-600 mb-8"></div>
             <div className="rounded-2xl overflow-hidden shadow-xl h-[500px] animate-fade-in">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3600.5995028050506!2d75.76467897523989!3d23.190114779056657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39637560e5321f8d%3A0x268bc85cafc2ce15!2sHotel%20Shree%20krishna%20palace!5e1!3m2!1sen!2sus!4v1765893419292!5m2!1sen!2sus"

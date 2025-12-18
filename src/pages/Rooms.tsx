@@ -67,7 +67,8 @@ export default function Rooms() {
       images: [
       "/room/Single1.jpg",
       "/room/Single2.jpg",
-      "/room/Single3.jpg"
+      "/room/Single3.jpg",
+      "/room/Single4.jpg"
     ],
       description: 'Perfect for budget-conscious travelers seeking comfort without AC. Spacious room with natural ventilation, ceiling fan, and all essential amenities for a pleasant stay.',
       amenities: [
