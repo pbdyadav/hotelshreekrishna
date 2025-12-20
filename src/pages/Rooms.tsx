@@ -59,6 +59,30 @@ function ImageSlider({ photos }) {
 }
 
 export default function Rooms() {
+  const handleBooking = (room) => {
+  const checkIn = document.getElementById("checkIn").value;
+  const checkOut = document.getElementById("checkOut").value;
+
+  const message = `
+Hello, I want to book a room:
+
+🏨 Room Details:
+• Room Type: ${room.name}
+• Price: ${room.price}
+• Guests Allowed: ${room.guests}
+
+📅 Booking Dates:
+• Check-in: ${checkIn || "Not selected"}
+• Check-out: ${checkOut || "Not selected"}
+
+Please confirm availability.
+`;
+
+  window.open(
+    `https://wa.me/919893567595?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
+};
   const roomTypes = [
     {
       name: 'Standard Non-AC Room',
@@ -225,6 +249,25 @@ Stay with us and enjoy a welcoming environment designed to make you feel at home
             <div className="w-[305px] h-1 bg-amber-600 mb-12"></div>
 
             <div className="space-y-12">
+              <div className="flex flex-col sm:flex-row gap-4 mb-10">
+  <div>
+    <label className="font-semibold">Check-in</label>
+    <input
+      id="checkIn"
+      type="date"
+      className="border rounded-lg p-2 w-full"
+    />
+  </div>
+
+  <div>
+    <label className="font-semibold">Check-out</label>
+    <input
+      id="checkOut"
+      type="date"
+      className="border rounded-lg p-2 w-full"
+    />
+  </div>
+</div>
               {roomTypes.map((room, index) => (
                 <div
                   key={index}
@@ -285,9 +328,12 @@ Stay with us and enjoy a welcoming environment designed to make you feel at home
       </div>
     </div>
 
-    <button className="mt-8 px-8 py-3 bg-amber-600 text-white font-bold rounded-lg hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-      Book This Room
-    </button>
+    <button
+  className="mt-8 px-8 py-3 bg-amber-600 text-white font-bold rounded-lg hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+  onClick={() => handleBooking(room)}
+>
+  Book This Room
+</button>
   </div>
 
                     
