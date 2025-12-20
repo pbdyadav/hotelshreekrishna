@@ -60,8 +60,13 @@ function ImageSlider({ photos }) {
 
 export default function Rooms() {
   const handleBooking = (room) => {
-  const checkIn = document.getElementById("checkIn").value;
-  const checkOut = document.getElementById("checkOut").value;
+  const checkIn = document.getElementById(`checkIn-${room.name}`).value;
+  const checkOut = document.getElementById(`checkOut-${room.name}`).value;
+
+  if (!checkIn || !checkOut) {
+    alert("Please select Check-in and Check-out dates.");
+    return;
+  }
 
   const message = `
 Hello, I want to book a room:
@@ -72,8 +77,8 @@ Hello, I want to book a room:
 • Guests Allowed: ${room.guests}
 
 📅 Booking Dates:
-• Check-in: ${checkIn || "Not selected"}
-• Check-out: ${checkOut || "Not selected"}
+• Check-in: ${checkIn}
+• Check-out: ${checkOut}
 
 Please confirm availability.
 `;
@@ -89,11 +94,11 @@ Please confirm availability.
       price: '₹500 - ₹700',
       guests: '1-2',
       images: [
-      "/room/Single1.jpg",
-      "/room/Single2.jpg",
-      "/room/Single3.jpg",
-      "/room/Single4.jpg"
-    ],
+        "/room/Single1.jpg",
+        "/room/Single2.jpg",
+        "/room/Single3.jpg",
+        "/room/Single4.jpg"
+      ],
       description: 'Perfect for budget-conscious travelers seeking comfort without AC. Spacious room with natural ventilation, ceiling fan, and all essential amenities for a pleasant stay.',
       amenities: [
         'Comfortable bed with quality mattress',
@@ -231,13 +236,13 @@ Please confirm availability.
               <div className="w-[535px] h-1 bg-amber-600 mx-auto mb-6"></div>
               <p className="text-xl text-gray-600 leading-relaxed">
                 Choose from our comfortable room options designed for every budget and need.
-Each room is thoughtfully prepared to offer a peaceful and relaxing stay for individuals, families, and groups.
-Enjoy clean, spacious interiors with fresh linens, soft mattresses, and modern fittings to ensure complete comfort.
-All rooms include attached bathrooms, excellent ventilation, and reliable 24/7 hot water facilities.
-Guests can benefit from convenient in-room features such as complimentary Wi-Fi, seating space, and essential toiletries.
-Private parking, CCTV security, and a friendly reception team make your stay even more safe and hassle-free.
-Whether you're traveling for pilgrimage, business, or family vacation, our rooms offer the perfect balance of affordability and comfort.
-Stay with us and enjoy a welcoming environment designed to make you feel at home in the heart of Ujjain.
+                Each room is thoughtfully prepared to offer a peaceful and relaxing stay for individuals, families, and groups.
+                Enjoy clean, spacious interiors with fresh linens, soft mattresses, and modern fittings to ensure complete comfort.
+                All rooms include attached bathrooms, excellent ventilation, and reliable 24/7 hot water facilities.
+                Guests can benefit from convenient in-room features such as complimentary Wi-Fi, seating space, and essential toiletries.
+                Private parking, CCTV security, and a friendly reception team make your stay even more safe and hassle-free.
+                Whether you're traveling for pilgrimage, business, or family vacation, our rooms offer the perfect balance of affordability and comfort.
+                Stay with us and enjoy a welcoming environment designed to make you feel at home in the heart of Ujjain.
               </p>
             </div>
           </div>
@@ -249,25 +254,7 @@ Stay with us and enjoy a welcoming environment designed to make you feel at home
             <div className="w-[305px] h-1 bg-amber-600 mb-12"></div>
 
             <div className="space-y-12">
-              <div className="flex flex-col sm:flex-row gap-4 mb-10">
-  <div>
-    <label className="font-semibold">Check-in</label>
-    <input
-      id="checkIn"
-      type="date"
-      className="border rounded-lg p-2 w-full"
-    />
-  </div>
 
-  <div>
-    <label className="font-semibold">Check-out</label>
-    <input
-      id="checkOut"
-      type="date"
-      className="border rounded-lg p-2 w-full"
-    />
-  </div>
-</div>
               {roomTypes.map((room, index) => (
                 <div
                   key={index}
@@ -275,68 +262,11 @@ Stay with us and enjoy a welcoming environment designed to make you feel at home
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
                   <div
-  className={`grid md:grid-cols-2 gap-10 items-center ${
-    index % 2 === 1 ? "md:flex-row-reverse" : ""
-  }`}
->
-  <ImageSlider photos={room.images || [room.images]} />
+                    className={`grid md:grid-cols-2 gap-10 items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""
+                      }`}
+                  >
+                    <ImageSlider photos={room.images || [room.images]} />
 
-  <div className="p-8 sm:p-10 flex flex-col justify-between">
-    <div>
-      <div className="mb-6">
-        <h3 className="text-3xl font-bold text-gray-900 mb-2">
-          {room.name}
-        </h3>
-        <p className="text-2xl font-bold text-amber-600 mb-4">
-          {room.price}
-          <span className="text-lg text-gray-600 font-normal"> per night</span>
-        </p>
-        <div className="flex items-center gap-2 text-gray-700 font-medium">
-          <Users size={20} className="text-amber-600" />
-          <span>Up to {room.guests} guests</span>
-        </div>
-      </div>
-
-      <p className="text-gray-600 mb-6 leading-relaxed">
-        {room.description}
-      </p>
-
-      <div className="grid sm:grid-cols-2 gap-6">
-        <div>
-          <h4 className="font-bold text-gray-900 mb-3">Amenities:</h4>
-          <ul className="space-y-2">
-            {room.amenities.map((amenity, i) => (
-              <li key={i} className="flex items-start gap-2 text-gray-700 text-sm">
-                <span className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0"></span>
-                {amenity}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="font-bold text-gray-900 mb-3">Perfect For:</h4>
-          <ul className="space-y-2">
-            {room.features.map((feature, i) => (
-              <li key={i} className="flex items-start gap-2 text-gray-700 text-sm">
-                <span className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0"></span>
-                {feature}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <button
-  className="mt-8 px-8 py-3 bg-amber-600 text-white font-bold rounded-lg hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-  onClick={() => handleBooking(room)}
->
-  Book This Room
-</button>
-  </div>
-
-                    
 
                     <div className="p-8 sm:p-10 flex flex-col justify-between">
                       <div>
@@ -384,11 +314,38 @@ Stay with us and enjoy a welcoming environment designed to make you feel at home
                           </div>
                         </div>
                       </div>
+                      <div className="grid grid-cols-2 gap-4 mt-6">
+                        <div>
+                          <label className="block text-gray-800 font-semibold mb-1">
+                            Check-in
+                          </label>
+                          <input
+                            type="date"
+                            id={`checkIn-${room.name}`}
+                            className="w-full border-2 border-amber-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-amber-600"
+                          />
+                        </div>
 
-                      <button className="mt-8 px-8 py-3 bg-amber-600 text-white font-bold rounded-lg hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                        <div>
+                          <label className="block text-gray-800 font-semibold mb-1">
+                            Check-out
+                          </label>
+                          <input
+                            type="date"
+                            id={`checkOut-${room.name}`}
+                            className="w-full border-2 border-amber-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-amber-600"
+                          />
+                        </div>
+                      </div>
+                      <button
+                        className="mt-8 px-8 py-3 bg-amber-600 text-white font-bold rounded-lg hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                        onClick={() => handleBooking(room)}
+                      >
                         Book This Room
                       </button>
                     </div>
+
+                    
                   </div>
                 </div>
               ))}
