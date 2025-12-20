@@ -4,8 +4,8 @@ import Footer from '../components/Footer';
 import StickyButton from '../components/StickyButton';
 
 export default function ContactPage() {
-  const phoneNumber = '+919876543210';
-  const whatsappNumber = '919876543210';
+  const phoneNumber = '+919893567595';
+  const whatsappNumber = '919893567595';
   const email = 'booking@shreekrishnapalace.com';
 
   const [formData, setFormData] = useState({
@@ -19,13 +19,30 @@ export default function ContactPage() {
 
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormData({ name: '', email: '', phone: '', checkIn: '', nights: '1', message: '' });
-  };
+  const handleSubmit = (e) => {
+  e.preventDefault();
 
+  const text = `
+Hello, I want to enquire about booking.
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Check-in: ${formData.checkIn}
+Nights: ${formData.nights}
+Message: ${formData.message}
+`;
+
+  // WhatsApp
+  window.open(
+    `https://wa.me/919893567595?text=${encodeURIComponent(text)}`,
+    "_blank"
+  );
+
+  // Email
+  //window.location.href = `mailto:hotelshreekrishnapalace@gmail.com?subject=Booking Enquiry&body=${encodeURIComponent(text)}`;
+
+  setSubmitted(true);
+};
   const contactMethods = [
     {
       icon: Phone,
@@ -94,7 +111,7 @@ export default function ContactPage() {
       <section className="bg-gradient-to-br from-amber-50 via-white to-amber-50/30 py-12 sm:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 animate-fade-in">
-            <h1 className="text-5xl sm:text-4xl font-bold text-gray-900 mb-4 text-left">
+            <h1 className="text-4xl sm:text-4xl font-bold text-gray-900 mb-4 text-left">
               Get In Touch
             </h1>
 

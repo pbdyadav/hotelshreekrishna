@@ -3,8 +3,8 @@ import { useState } from 'react';
 
 export default function StickyButton() {
   const [isOpen, setIsOpen] = useState(false);
-  const phoneNumber = '+919876543210';
-  const whatsappNumber = '919876543210';
+  const phoneNumber = '+919893567595';
+  const whatsappNumber = '919893567595';
 
   return (
     <>

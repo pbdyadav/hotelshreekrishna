@@ -1,8 +1,8 @@
 import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
 
 export default function Contact() {
-  const phoneNumber = '+919876543210';
-  const whatsappNumber = '919876543210';
+  const phoneNumber = '+919893567595';
+  const whatsappNumber = '919893567595';
   const email = 'booking@shreekrishnapalace.com';
 
   return (

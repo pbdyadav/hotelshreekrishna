@@ -1,8 +1,8 @@
 import { Phone, MessageCircle } from 'lucide-react';
 
 export default function Hero() {
-  const phoneNumber = '+919876543210';
-  const whatsappNumber = '919876543210';
+  const phoneNumber = '+919893567595';
+  const whatsappNumber = '919893567595';
 
   return (
     // Added 'overflow-hidden' to ensure the wave cut doesn't cause horizontal scroll

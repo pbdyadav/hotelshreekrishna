@@ -1,8 +1,8 @@
 import { Phone, MessageCircle, MapPin, Heart } from 'lucide-react';
 
 export default function Footer() {
-  const phoneNumber = '+919876543210';
-  const whatsappNumber = '919876543210';
+  const phoneNumber = '+919893567595';
+  const whatsappNumber = '919893567595';
   const currentYear = new Date().getFullYear();
 
   return (
